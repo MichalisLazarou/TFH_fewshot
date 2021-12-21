@@ -20,7 +20,7 @@ If you find this repo useful for your research, please consider citing the paper
 ```
 @conference{tfh,
    title = {Tensor feature hallucination for few-shot learning},
-   author = {M. Lazarou and Y. Avrithis and T. Stathaki},
+   author = {M. Lazaroux and T. Stathaki and Y. Avrithis},
    booktitle = {Proceedings of IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
    address = {Waikoloa, HI, US},
    year = {2022}
