@@ -44,7 +44,7 @@ For the second stage use `res18_distil.py` which uses standard cross entropy los
 in the `res18_args.py` to train the corresponding vector or tensor hallucinator.
 
 ## Testing with baselines
-**Run:** `python resnet18_224_models/test_res18 --dataset $dataset --classifier $classifier` *Change the method variable in the script test_res18.py to compare
+**Run:** `python resnet18_224_models/test_res18 --dataset $dataset --classifier $classifier` *Change the method variable in the script `test_res18.py` to compare
 the baselines (without hallucinator/vector hallucinator/tensor hallucinator)*
 
 ## Contacts
