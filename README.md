@@ -35,10 +35,17 @@ For ResNet-12 experiments we used the datasets as provided by [DeepEMD](https://
 **Note** Two stage training regime. For the first stage train the model using `train_res18.py` which uses standard multi-class cross entropy loss.
 For the second stage use `res18_distil.py` which uses standard cross entropy loss + knowledge distillation using the model trained in stage 1 as the teacher model.
 
+**Stage 1:** `python resnet18_224_models/train_res18.py --dataset $dataset`
+
+**Stage 2:** `python resnet18_224_models/res18_distil.py --dataset $dataset` *Make sure you change set the correct teacher network path `params.file_path` in `res18_distil.py`*
+
 ## Training tensor feature hallucinator
+**Training hallucinator**: In the folder `gen_training` run the script `meta_gen_train.py` to train the hallucinator. Make sure you select vector/tensor hallucinator
+in the `res18_args.py` to train the corresponding vector or tensor hallucinator.
 
 ## Testing with baselines
-
+**Run:** `python resnet18_224_models/test_res18 --dataset $dataset --classifier $classifier` *Change the method variable in the script test_res18.py to compare
+the baselines (without hallucinator/vector hallucinator/tensor hallucinator)*
 
 ## Contacts
 For any questions, please contact:
