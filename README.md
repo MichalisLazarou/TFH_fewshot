@@ -45,7 +45,7 @@ in the `res18_args.py` to train the corresponding vector or tensor hallucinator.
 
 ## Testing with baselines
 **Run:** `python resnet18_224_models/test_res18.py --dataset $dataset --classifier $classifier` *Change the method variable in the script `test_res18.py` to compare
-the baselines (without hallucinator/vector hallucinator/tensor hallucinator)*
+the baselines (without hallucinator/vector hallucinator/tensor hallucinator). Our fine-tuned tensor hallucinator is controlled from the adapt parameter in `re18_args.py`*
 
 ## Contacts
 For any questions, please contact:
