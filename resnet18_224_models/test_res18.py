@@ -61,14 +61,14 @@ def get_predictions(params, model, data, vae = 'nothing', vaegt = None, prior=No
     if vae == 'vae_vector':
         vaegt.eval()
         vaegt.load_state_dict(torch.load(params.vae_path))
-        aug_features, aug_ys = vf.augment_vae_same(params, vaegt, support_features, support_ys, no_samples=100)
+        aug_features, aug_ys = vf.augment_vector(params, vaegt, support_features, support_ys, no_samples=100)
         aug_features, aug_ys, support_features, support_ys = aug_features.cpu(), aug_ys.cpu(), support_features.cpu(), support_ys.cpu()
         support_features, support_ys = torch.cat((support_features, aug_features), dim=0).cpu(), torch.cat( (support_ys, aug_ys), dim=0).cpu()
         query_features, query_ys = query_features.cpu(), query_ys.cpu()
     elif vae == 'vae_tensor':
         vaegt.eval()
         vaegt.load_state_dict(torch.load(params.vae_path))
-        aug_features, aug_ys = vf.augment_vae_tensor(params, vaegt, support_features, support_ys, no_samples=100)
+        aug_features, aug_ys = vf.augment_tensor(params, vaegt, support_features, support_ys, no_samples=100)
         aug_features, support_features= model.avgpool(aug_features), model.avgpool(support_features)
         query_features = model.avgpool(query_features)
         aug_features, support_features, query_features = aug_features.view(aug_features.size(0), -1), support_features.view(support_features.size(0), -1), query_features.view(query_features.size(0), -1)
@@ -130,8 +130,6 @@ if __name__ == '__main__':
     loadfile = configs.data_dir[params.dataset] + split + '.json'
     data_loader = datamgr.get_data_loader(loadfile, aug=False)
     print(split)
-    # only for cross-few-shot uncomment
-    #params.dataset = 'miniImagenet'
     params.hallucinator_dir = '/home/michalislazarou/PhD/TFH_fewshot/gen_training'
     params.file_path = '%s/checkpoints/%s/%s/best_model_kd.tar' %(os.path.dirname(os.path.abspath(__file__)), params.dataset, 'resnet18')
     print(params.file_path)
@@ -144,7 +142,7 @@ if __name__ == '__main__':
     else:
         params.num_classes = 64
     model = EmbeddingNet(params)
-    method = 'inductive_tensor' # 'inductive_tensor' is for the WACV paper
+    method = 'inductive_vector' # 'inductive_tensor' is for the WACV paper
     # method = 'inductive_LR'
     if method == 'inductive':
         test_acc, test_std = few_shot_test(params, model, data_loader, vae='nothing')
