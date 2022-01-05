@@ -2,7 +2,7 @@
 
 This repo covers the implementation of the following paper: 
 
-**"Tensor feature hallucination for few-shot learning (WACV 2022)"** [Pre-print](https://arxiv.org/abs/2106.05321),
+**"Tensor feature hallucination for few-shot learning (WACV 2022)"** [Pre-print](https://arxiv.org/abs/2106.05321), [Paper](https://openaccess.thecvf.com/content/WACV2022/html/Lazarou_Tensor_Feature_Hallucination_for_Few-Shot_Learning_WACV_2022_paper.html?fbclid=IwAR0lv5AgZjVsahL_xjhhWNzTGQD2RRWk3omFYL66uRqMF7v0BDpI88uYC_I)
 <p align='center'>
   <img src='imgs/idea_tfh.png' width="800px">
 </p>
